@@ -25,6 +25,7 @@
     },
     "files": [
       "index.js",
+      "index.html",
       "sql.js"
     ],
     "mac": {
