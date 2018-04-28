@@ -1,0 +1,89 @@
+{
+  "name": "node-sqlite3-electron-sample",
+  "version": "1.0.0",
+  "description": "A sample application for sqlite3 in electron",
+  "main": "index.js",
+  "author": "Kewde <kewde@particl.io>",
+  "homepage": "https://kewde.github.io",
+  "license": "MIT",
+  "scripts": {
+    "electron": "electron .",
+    "package:mac": "electron-builder -m",
+    "package:linux": "electron-builder -l",
+    "package:win": "electron-builder --win --x64",
+    "package": "electron-builder -ml && yarn run package:win",
+    "postinstall": "install-app-deps"
+  },
+  "productName": "SQLite3 Sample Application (Electron)",
+  "build": {
+    "electronVersion": "1.7.12",
+    "appId": "io.github.kewde",
+    "npmRebuild": false,
+    "directories": {
+      "buildResources": "resources",
+      "output": "packages"
+    },
+    "files": [
+      "index.js"
+    ],
+    "mac": {
+      "artifactName": "${name}-${version}-${os}.${ext}",
+      "category": "public.app-category.wallet",
+      "target": [
+        "zip"
+      ]
+    },
+    "nsis": {
+      "perMachine": true,
+      "oneClick": false
+    },
+    "win": {
+      "artifactName": "${name}-${version}-${os}-${arch}.${ext}",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "linux": {
+      "maintainer": "particl contributors <hello@particl.io>",
+      "artifactName": "${name}-${version}-${os}-${arch}.${ext}",
+      "target": [
+        {
+          "target": "deb",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "tar.gz",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "asar": true,
+    "asarUnpack": [
+      "node_modules/sqlite3/**/*"
+    ]
+  },
+  "dependencies": {
+    "sqlite3": "^4.0.0"
+  },
+  "devDependencies": {
+    "electron": "1.7.12",
+    "electron-builder": "^20.0.4"
+  }
+}
