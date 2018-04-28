@@ -24,7 +24,8 @@
       "output": "packages"
     },
     "files": [
-      "index.js"
+      "index.js",
+      "sql.js"
     ],
     "mac": {
       "artifactName": "${name}-${version}-${os}.${ext}",
