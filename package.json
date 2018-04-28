@@ -8,17 +8,16 @@
   "license": "MIT",
   "scripts": {
     "electron": "electron .",
-    "package:mac": "electron-builder -m",
-    "package:linux": "electron-builder -l",
-    "package:win": "electron-builder --win --x64",
-    "package": "electron-builder -ml && yarn run package:win",
-    "postinstall": "install-app-deps"
+    "package:mac": "DEBUG=electron-builder electron-builder -m",
+    "package:linux": "DEBUG=electron-builder electron-builder -l",
+    "package:win": "DEBUG=electron-builder electron-builder --win --x64",
+    "package": "DEBUG=electron-builder electron-builder -ml && yarn run package:win",
+    "postinstall": "DEBUG=electron-builder install-app-deps"
   },
   "productName": "SQLite3 Sample Application (Electron)",
   "build": {
     "electronVersion": "1.7.12",
     "appId": "io.github.kewde",
-    "npmRebuild": false,
     "directories": {
       "buildResources": "resources",
       "output": "packages"
